@@ -1,10 +1,58 @@
 <div class="row">
     <div class="col-12 text-end">
-        <button class="btn btn-success btn-sm">Add New</button>
+        <button class="btn btn-success btn-sm" (click)="addNewCar()">Add New</button>
     </div>
 </div>
-<div class="row">
-    <div class="col-3">
-        
+<div class="container car-list-home-container">
+
+    <div class="row car-list-home">
+        <div class="col-3" *ngFor="let car of carList">
+            <app-car-card [carData]="car"></app-car-card>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="addNewCarModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Log in</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-6">
+                        <label for="email">Brand</label>
+                        <input id="email" type="email" [(ngModel)]="carObj.brand" class="form-control" />
+                    </div>
+                    <div class="col-6">
+                        <label for="passowrd">Name</label>
+                        <input id="passowrd" type="text" [(ngModel)]="carObj.name" class="form-control" />
+                    </div>
+                    <div class="col-6">
+                        <label for="pricing">Pricing</label>
+                        <input id="pricing" type="number" [(ngModel)]="carObj.pricing" class="form-control" />
+                    </div>
+                    <div class="col-6">
+                        <label for="description">Description</label>
+                        <input id="description" type="text" [(ngModel)]="carObj.pricingDescription"
+                            class="form-control" />
+                    </div>
+                    <div class="col-6">
+                        <label for="imageUrl">Image</label>
+                        <input id="imageUrl" type="text" [(ngModel)]="carObj.imageUrl" class="form-control" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+                    Close
+                </button>
+                <button class="btn btn-success round-button" type="button">
+                    Login
+                </button>
+            </div>
+        </div>
     </div>
 </div>

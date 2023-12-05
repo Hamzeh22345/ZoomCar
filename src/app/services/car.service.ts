@@ -3,17 +3,25 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CarService {
+  apiEndPoint: string = 'https://freeapi.miniprojectideas.com/api/ZoomCar/';
+  constructor(private http: HttpClient) {}
 
-  apiEndPoint: string ='https://freeapi.miniprojectideas.com/api/ZoomCar/';
-  constructor(private http:HttpClient) { }
-
-  resgisterUser(obj: any): Observable<any>{
-    return this.http.post(this.apiEndPoint + 'AddNewUser', obj)
+  resgisterUser(obj: any): Observable<any> {
+    return this.http.post(this.apiEndPoint + 'AddNewUser', obj);
   }
-  loginUser(obj: any): Observable<any>{
-    return this.http.post(this.apiEndPoint + 'Login', obj ,{observe: 'response'})
+  loginUser(obj: any): Observable<any> {
+    return this.http.post(this.apiEndPoint + 'Login', obj, {
+      observe: 'response',
+    });
+  }
+  getAllCarByOwnerId(userId: number): Observable<any> {
+    return this.http.get(this.apiEndPoint + 'GetAllCarsByOwnerId?id=' + userId);
+  }
+
+  addNewCar(obj: any): Observable<any> {
+    return this.http.post(this.apiEndPoint + 'AddNewCar', obj);
   }
 }

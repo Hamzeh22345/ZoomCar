@@ -1,22 +1,11 @@
 <nav class="navbar navbar-expand-lg navbar-secondary">
   <div class="container">
     <a class="navbar-brand" href="index.html">
-      <img
-        id="logoSize"
-        src="https://www.zoomcar.com/blog/wp-content/uploads/2020/03/footer-logo.png"
-        alt=""
-        class="d-inline-block align-text-top"
-      />
+      <img id="logoSize" src="https://www.zoomcar.com/blog/wp-content/uploads/2020/03/footer-logo.png" alt=""
+        class="d-inline-block align-text-top" />
     </a>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -25,27 +14,15 @@
         <button class="btn btn-outline-primary round-button mx-2" type="button">
           {{ loggedUserObj.emailId }}
         </button>
-        <button
-          class="btn btn-success round-button"
-          (click)="logout()"
-          type="button"
-        >
+        <button class="btn btn-success round-button" (click)="logout()" type="button">
           Log out
         </button>
       </form>
       <form class="d-flex" *ngIf="!loggedUserObj">
-        <button
-          class="btn btn-outline-primary round-button mx-2"
-          (click)="openLogin()"
-          type="button"
-        >
+        <button class="btn btn-outline-primary round-button mx-2" (click)="openLogin()" type="button">
           Login
         </button>
-        <button
-          class="btn btn-success round-button"
-          (click)="openRegister()"
-          type="button"
-        >
+        <button class="btn btn-success round-button" (click)="openRegister()" type="button">
           Register
         </button>
       </form>
@@ -60,84 +37,46 @@
     <div class="modal-content">
       <div class="modal-header">
         <h4 class="modal-title">Registeration</h4>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-        ></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
 
       <div class="modal-body">
         <div class="row">
           <div class="col-6">
             <label for="userName">Name</label>
-            <input
-              id="userName"
-              [(ngModel)]="registerObj.name"
-              type="text"
-              class="form-control"
-            />
+            <input id="userName" [(ngModel)]="registerObj.name" type="text" class="form-control" />
           </div>
         </div>
         <div class="row">
           <div class="col-6">
             <label for="email">Email</label>
-            <input
-              id="email"
-              [(ngModel)]="registerObj.emailId"
-              type="email"
-              class="form-control"
-            />
+            <input id="email" [(ngModel)]="registerObj.emailId" type="email" class="form-control" />
           </div>
           <div class="col-6">
             <label for="mobileNumber">Mobile No</label>
-            <input
-              id="mobileNumber"
-              [(ngModel)]="registerObj.mobileNo"
-              type="text"
-              class="form-control"
-            />
+            <input id="mobileNumber" [(ngModel)]="registerObj.mobileNo" type="text" class="form-control" />
           </div>
         </div>
         <div class="row">
           <div class="col-6">
             <label for="whoAreYou">Who Are You</label>
-            <select
-              id="whoAreYou"
-              [(ngModel)]="registerObj.userRole"
-              type="text"
-              class="form-control"
-            >
+            <select id="whoAreYou" [(ngModel)]="registerObj.userRole" type="text" class="form-control">
               <option value="Customer">Customer</option>
               <option value="CarOwner">Car Owner</option>
             </select>
           </div>
           <div class="col-6">
             <label for="passowrd">Password</label>
-            <input
-              id="passowrd"
-              [(ngModel)]="registerObj.password"
-              type="text"
-              class="form-control"
-            />
+            <input id="passowrd" [(ngModel)]="registerObj.password" type="text" class="form-control" />
           </div>
         </div>
       </div>
 
       <div class="modal-footer">
-        <button
-          type="button"
-          class="btn btn-danger"
-          data-bs-dismiss="modal"
-          (click)="closeRegister()"
-        >
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="closeRegister()">
           Close
         </button>
-        <button
-          class="btn btn-success round-button"
-          (click)="onRegister()"
-          type="button"
-        >
+        <button class="btn btn-success round-button" (click)="onRegister()" type="button">
           Register
         </button>
       </div>
@@ -149,49 +88,26 @@
     <div class="modal-content">
       <div class="modal-header">
         <h4 class="modal-title">Log in</h4>
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="modal"
-        ></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
       </div>
       <div class="modal-body">
         <div class="row">
           <div class="col-6">
             <label for="email">Email</label>
-            <input
-              id="email"
-              [(ngModel)]="loginObj.emailId"
-              type="email"
-              class="form-control"
-            />
+            <input id="email" [(ngModel)]="loginObj.emailId" type="email" class="form-control" />
           </div>
           <div class="col-6">
             <label for="passowrd">Password</label>
-            <input
-              id="passowrd"
-              [(ngModel)]="loginObj.password"
-              type="text"
-              class="form-control"
-            />
+            <input id="passowrd" [(ngModel)]="loginObj.password" type="text" class="form-control" />
           </div>
         </div>
       </div>
 
       <div class="modal-footer">
-        <button
-          type="button"
-          class="btn btn-danger"
-          data-bs-dismiss="modal"
-          (click)="closeLogin()"
-        >
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="closeLogin()">
           Close
         </button>
-        <button
-          class="btn btn-success round-button"
-          (click)="onLogin()"
-          type="button"
-        >
+        <button class="btn btn-success round-button" (click)="onLogin()" type="button">
           Login
         </button>
       </div>
