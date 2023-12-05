@@ -19,17 +19,29 @@ export class AppComponent {
     createdOn: new Date(),
   };
 
-  // loginObj: any = {
-  //   emailId: '',
-  //   password: '',
-  // };
+  loginObj: any = {
+    userId: 0,
+    name: 'sss',
+    userRole: 'CarOwner',
+    mobileNo: '133455654',
+    emailId: '',
+    password: '',
+  };
 
-  constructor(private carService: CarService) {}
+  loggedUserObj: any ;
+
+  constructor(private carService: CarService) {
+    const local= localStorage.getItem('zoomUser')
+    if(local != null){
+      this.loggedUserObj = JSON.parse(local);
+    }
+  }
 
   onRegister() {
     this.carService.resgisterUser(this.registerObj).subscribe((res: any) => {
       if (res.status) {
         alert('Registration Successfull');
+        this.loggedUserObj = res.body.data;
         this.closeRegister();
       } else {
         alert('Registration Failed');
@@ -38,15 +50,21 @@ export class AppComponent {
   }
 
   onLogin() {
-    this.carService.loginUser(this.registerObj).subscribe((res: any) => {
+    this.carService.loginUser(this.loginObj).subscribe((res: any) => {
       if (res.status) {
         alert('Login Successfull');
-        localStorage.setItem('token', JSON.stringify(res.data));
+        console.log(res);
+        localStorage.setItem('zoomUser', JSON.stringify(res.body.data));
         this.closeLogin();
+        this.loggedUserObj = res.body.data;
       } else {
         alert('Login Failed');
       }
     });
+  }
+  logout(){
+    localStorage.removeItem('zoomUser');
+    this.loggedUserObj = undefined;
   }
 
   openLogin() {

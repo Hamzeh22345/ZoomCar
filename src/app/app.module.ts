@@ -9,8 +9,9 @@ import { SearchComponent } from './components/search/search.component';
 import { BookingComponent } from './components/booking/booking.component';
 import { CarsComponent } from './components/cars/cars.component';
 import { HttpClientModule } from '@angular/common/http';
+import { CarCardComponent } from './reusableComponents/car-card/car-card.component';
 @NgModule({
-  declarations: [AppComponent, HomeComponent, SearchComponent, BookingComponent, CarsComponent],
+  declarations: [AppComponent, HomeComponent, SearchComponent, BookingComponent, CarsComponent, CarCardComponent],
   imports: [BrowserModule, AppRoutingModule, CommonModule, FormsModule, AppRoutingModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
