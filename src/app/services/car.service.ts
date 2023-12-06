@@ -17,6 +17,11 @@ export class CarService {
       observe: 'response',
     });
   }
+
+getAllLocations(){
+  return this.http.get(this.apiEndPoint + 'GetAllLocations');
+}
+
   getAllCarByOwnerId(userId: number): Observable<any> {
     return this.http.get(this.apiEndPoint + 'GetAllCarsByOwnerId?id=' + userId);
   }

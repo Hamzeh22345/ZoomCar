@@ -30,6 +30,7 @@ export class CarsComponent implements OnInit {
 
   loggedUserObj: any;
   carList: any[] = [];
+  locations: any[] = [];
   constructor(private carsService: CarService) {
     const local = localStorage.getItem('zoomUser');
     if (local != null) {
@@ -40,14 +41,22 @@ export class CarsComponent implements OnInit {
     this.getCars();
   }
   getCars() {
-    this.carsService
-      .getAllCarByOwnerId(this.loggedUserObj.userId)
-      .subscribe((res: any) => {
-        this.carList = res.data;
-      });
+    this.carsService.getAllCarByOwnerId(this.loggedUserObj.userId).subscribe((res: any) => {
+      this.carList = res.data;
+    });
+  }
+  getLocations() {
+    this.carsService.getAllLocations().subscribe((res: any) => {
+      this.locations = res.data;
+    });
   }
   addNewCar() {
     const modal = document.getElementById('addNewCarModal');
     if (modal != null) modal.style.display = 'block';
+  }
+
+  close() {
+    const modal = document.getElementById('addNewCarModal');
+    if (modal != null) modal.style.display = 'none';
   }
 }
