@@ -8,7 +8,7 @@ import { CarService } from 'src/app/services/car.service';
   styleUrls: ['./cars.component.scss'],
 })
 export class CarsComponent implements OnInit {
-  carAccessories: any = {
+  carAccessoriesObj: any = {
     accessoriesId: 0,
     accessoriesTitle: '',
     showOnWebsite: true,
@@ -25,7 +25,7 @@ export class CarsComponent implements OnInit {
     imageUrl: '',
     vehicleNo: '',
     ownerUserId: 0,
-    ZoomCarAccessoriess: [],
+    ZoomCarAccessories: [],
   };
 
   loggedUserObj: any;
@@ -39,6 +39,7 @@ export class CarsComponent implements OnInit {
   }
   ngOnInit(): void {
     this.getCars();
+    this.getLocations();
   }
   getCars() {
     this.carsService.getAllCarByOwnerId(this.loggedUserObj.userId).subscribe((res: any) => {
@@ -58,5 +59,9 @@ export class CarsComponent implements OnInit {
   close() {
     const modal = document.getElementById('addNewCarModal');
     if (modal != null) modal.style.display = 'none';
+  }
+
+  Add(){
+    this.carObj.ZoomCarAccessories.push(this.carAccessoriesObj)
   }
 }
