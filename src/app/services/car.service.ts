@@ -18,9 +18,9 @@ export class CarService {
     });
   }
 
-getAllLocations(){
-  return this.http.get(this.apiEndPoint + 'GetAllLocations');
-}
+  getAllLocations() {
+    return this.http.get(this.apiEndPoint + 'GetAllLocations');
+  }
 
   getAllCarByOwnerId(userId: number): Observable<any> {
     return this.http.get(this.apiEndPoint + 'GetAllCarsByOwnerId?id=' + userId);
@@ -28,5 +28,9 @@ getAllLocations(){
 
   addNewCar(obj: any): Observable<any> {
     return this.http.post(this.apiEndPoint + 'AddNewCar', obj);
+  }
+
+  getAllCars() {
+    return this.http.get(this.apiEndPoint + 'GetAllCars');
   }
 }

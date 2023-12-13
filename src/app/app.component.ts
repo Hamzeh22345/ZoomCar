@@ -28,13 +28,14 @@ export class AppComponent {
     password: '',
   };
 
-  loggedUserObj: any ;
+  loggedUserObj: any;
 
   constructor(private carService: CarService) {
-    const local= localStorage.getItem('zoomUser')
-    if(local != null){
+    const local = localStorage.getItem('zoomUser');
+    if (local != null) {
       this.loggedUserObj = JSON.parse(local);
     }
+ 
   }
 
   onRegister() {
@@ -61,8 +62,10 @@ export class AppComponent {
         alert('Login Failed');
       }
     });
+
+    console.log(this.loggedUserObj.userRole);
   }
-  logout(){
+  logout() {
     localStorage.removeItem('zoomUser');
     this.loggedUserObj = undefined;
   }

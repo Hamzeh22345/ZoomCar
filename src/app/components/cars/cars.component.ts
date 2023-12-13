@@ -11,7 +11,7 @@ export class CarsComponent implements OnInit {
   carAccessoriesObj: any = {
     accessoriesId: 0,
     accessoriesTitle: '',
-    showOnWebsite: true,
+    showOnWebsite: false,
     carId: 0,
   };
   carObj: any = {
@@ -21,7 +21,7 @@ export class CarsComponent implements OnInit {
     pricingDescription: '',
     pricing: 0,
     locationId: 0,
-    registeredOn: '',
+    registeredOn: '2023-12-13T08:11:52.058Z',
     imageUrl: '',
     vehicleNo: '',
     ownerUserId: 0,
@@ -61,7 +61,38 @@ export class CarsComponent implements OnInit {
     if (modal != null) modal.style.display = 'none';
   }
 
-  Add(){
-    this.carObj.ZoomCarAccessories.push(this.carAccessoriesObj)
+  Add() {
+    const obj = JSON.stringify(this.carAccessoriesObj);
+    this.carObj.ZoomCarAccessories.push(JSON.parse(obj));
+    this.carAccessoriesObj ={
+      "accessoriesId": 0,
+      "accessoriesTitle": '',
+      "showOnWebsite": this.carAccessoriesObj.showOnWebsite,
+      "carId": 0,
+    }
+  }
+
+  saveCar() {
+    this.carObj.ownerUserId = this.loggedUserObj.userId;
+    this.carsService.addNewCar(this.carObj).subscribe((res: any) => {
+      console.log(res);
+      if (res.result != null) {
+        alert('Accessories added successfully');
+        this.getCars();
+        this.close();
+        this.carObj = {
+          brand: '',
+          name: '',
+          pricingDescription: '',
+          pricing: 0,
+          locationId: 0,
+          registeredOn: '2023-12-13T08:11:52.058Z',
+          imageUrl: '',
+          vehicleNo: '',
+          ownerUserId: 0,
+          ZoomCarAccessories: [],
+        };
+      }
+    });
   }
 }

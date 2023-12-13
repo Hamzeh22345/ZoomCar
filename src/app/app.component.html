@@ -1,30 +1,34 @@
 <nav class="navbar navbar-expand-lg navbar-secondary">
   <div class="container">
     <a class="navbar-brand" href="index.html">
-      <img id="logoSize" src="https://www.zoomcar.com/blog/wp-content/uploads/2020/03/footer-logo.png" alt=""
-        class="d-inline-block align-text-top" />
+      <img id="logoSize" src="https://www.zoomcar.com/blog/wp-content/uploads/2020/03/footer-logo.png" alt="" class="d-inline-block align-text-top" />
     </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item text-white" *ngIf="loggedUserObj && loggedUserObj.userRole === 'CarOwner'">
+          <a class="nav-link text-white" routerLink="/cars">Cars</a>
+        </li>
+      </ul>
       <form class="d-flex" *ngIf="loggedUserObj">
         <button class="btn btn-outline-primary round-button mx-2" type="button">
           {{ loggedUserObj.emailId }}
         </button>
-        <button class="btn btn-success round-button" (click)="logout()" type="button">
-          Log out
-        </button>
+        <button class="btn btn-success round-button" (click)="logout()" type="button">Log out</button>
       </form>
       <form class="d-flex" *ngIf="!loggedUserObj">
-        <button class="btn btn-outline-primary round-button mx-2" (click)="openLogin()" type="button">
-          Login
-        </button>
-        <button class="btn btn-success round-button" (click)="openRegister()" type="button">
-          Register
-        </button>
+        <button class="btn btn-outline-primary round-button mx-2" (click)="openLogin()" type="button">Login</button>
+        <button class="btn btn-success round-button" (click)="openRegister()" type="button">Register</button>
       </form>
     </div>
   </div>
@@ -73,12 +77,8 @@
       </div>
 
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="closeRegister()">
-          Close
-        </button>
-        <button class="btn btn-success round-button" (click)="onRegister()" type="button">
-          Register
-        </button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="closeRegister()">Close</button>
+        <button class="btn btn-success round-button" (click)="onRegister()" type="button">Register</button>
       </div>
     </div>
   </div>
@@ -104,12 +104,8 @@
       </div>
 
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="closeLogin()">
-          Close
-        </button>
-        <button class="btn btn-success round-button" (click)="onLogin()" type="button">
-          Login
-        </button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="closeLogin()">Close</button>
+        <button class="btn btn-success round-button" (click)="onLogin()" type="button">Login</button>
       </div>
     </div>
   </div>

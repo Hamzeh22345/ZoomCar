@@ -62,7 +62,7 @@
               </div>
               <div class="col-3">
                 <label for="showWebsite">Website</label>
-                <input id="showWebsite" type="checkbox" [(ngModel)]="carObj.showOnWebsite" />
+                <input id="showWebsite" type="checkbox" [(ngModel)]="carAccessoriesObj.showOnWebsite" [checked]="carAccessoriesObj.showOnWebsite" />
               </div>
               <div class="col-3">
                 <button class="btn btn-sm btn-primary" (click)="Add()">Add</button>
@@ -86,7 +86,7 @@
                         {{ item.accessoriesTitle }}
                       </td>
                       <td>
-                        {{ item.showOnWebsite? 'YES' : 'No' }}
+                        {{ item.showOnWebsite? 'Yes' : 'No' }}
                       </td>
                     </tr>
                   </tbody>
@@ -99,7 +99,7 @@
 
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="close()">Close</button>
-        <button class="btn btn-success round-button" type="button">Add</button>
+        <button class="btn btn-success round-button" (click)="saveCar()" type="button">Add</button>
       </div>
     </div>
   </div>
