@@ -33,4 +33,8 @@ export class CarService {
   getAllCars() {
     return this.http.get(this.apiEndPoint + 'GetAllCars');
   }
+
+  getAllCarsByLocation(locationId: string): Observable<any> {
+    return this.http.get(this.apiEndPoint + 'GetAllCarsByLocation?id=' + locationId);
+  }
 }

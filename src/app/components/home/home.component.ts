@@ -20,7 +20,6 @@ export class HomeComponent implements OnInit {
   locations: any[] = [];
   fromLocation: string = '';
   toLocation: string = '';
-  sfof:any;
   ngOnInit(): void {
     this.getAllCarByOwnerId();
     this.getAllLocations();
@@ -33,13 +32,17 @@ export class HomeComponent implements OnInit {
 
   getAllLocations() {
     this.carService.getAllLocations().subscribe((res: any) => {
-      console.log(res)
+      console.log(res);
       this.locations = res.data;
     });
   }
-  navigateToSearchPage($event:any) {
+  navigateToSearchPage($event: any) {
     console.log($event.target.to.value);
-    
-    this.router.navigate(['/search', $event.target.from.value,$event.target.to.value]);
+
+    this.router.navigate([
+      '/search',
+      $event.target.from.value,
+      // ,$event.target.to.value
+    ]);
   }
 }

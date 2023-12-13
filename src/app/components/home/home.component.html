@@ -2,14 +2,16 @@
   <form id="form" (submit)="navigateToSearchPage($event)">
     <select #from name="from" id="start" class="form-control" [value]="fromLocation">
       <option value="2">Pick Up Address</option>
-      <option *ngFor="let location of locations"  [(ngModel)]="fromLocation" name="fromLocation" [value]="location.locationId" >{{ location.locationId }}</option>
+      <option *ngFor="let location of locations" [(ngModel)]="fromLocation" name="fromLocation"
+        [value]="location.locationId">{{ location.title }}</option>
     </select>
-    <select #to name="to" id="end" class="form-control" >
+    <select #to name="to" id="end" class="form-control">
       <option value="2">Drop Off Address</option>
-      <option [(ngModel)]="toLocation" name="toLocation" [value]="location.locationId" *ngFor="let location of locations">{{ location.locationId }}</option>
+      <option [(ngModel)]="toLocation" name="toLocation" [value]="location.locationId"
+        *ngFor="let location of locations">{{ location.title }}</option>
     </select>
 
-    <div><button id="primaryButton" type="submit" >FIND CARS</button></div>
+    <div><button id="primaryButton" type="submit">FIND CARS</button></div>
   </form>
 </div>
 <div class="row">
