@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, ObservableLike } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -37,4 +37,9 @@ export class CarService {
   getAllCarsByLocation(locationId: string): Observable<any> {
     return this.http.get(this.apiEndPoint + 'GetAllCarsByLocation?id=' + locationId);
   }
+
+  getCarById(carId : string): Observable<any> {
+    return this.http.get(this.apiEndPoint + 'GetCarById?id=' + carId);
+  }
+  
 }

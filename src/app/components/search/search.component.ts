@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CarService } from 'src/app/services/car.service';
 
 @Component({
@@ -13,8 +13,8 @@ export class SearchComponent implements OnInit {
   fromLocation: string = '';
   toLocation: string = '';
   availableCars: any[] = [];
-  constructor(private activateRoute: ActivatedRoute, private carService: CarService) {
-    this.activateRoute.params.subscribe((res) => {
+  constructor(private activatedRoute: ActivatedRoute, private carService: CarService, private router: Router) {
+    this.activatedRoute.params.subscribe((res) => {
       console.log(res);
       this.locationId = res['from'];
       console.log(this.locationId);
@@ -38,5 +38,15 @@ export class SearchComponent implements OnInit {
       console.log(res);
       this.availableCars = res.data;
     });
+  }
+
+  onLocationChange() {
+    this.carService.getAllCarsByLocation(this.fromLocation).subscribe((res: any) => {
+      this.availableCars = res.data;
+    });
+  }
+
+  makeBooking(carId: number, $event: any) {
+    this.router.navigate(['/booking',this.fromLocation, carId]);
   }
 }

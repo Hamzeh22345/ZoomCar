@@ -20,7 +20,7 @@ const routes: Routes = [
     component: SearchComponent,
   },
   {
-    path: 'booking',
+    path: 'booking/:from/:carId',
     component: BookingComponent,
   },
   {
